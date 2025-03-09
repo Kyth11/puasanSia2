@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -24,6 +25,25 @@ return new class extends Migration
                 $table->foreign("inspector_id")-> references("id")-> on ("inspector")-> onDelete("cascade")-> onUpdate("cascade");
 
             });
+
+            DB::table("inspections")->insert([
+                ["DATE"=> "2022/11/11",
+                "TIME"=> "12:00:00",
+                "inspector_id"=> 1,
+                "violation_id"=> 1,
+                "restaurant_id"=> 1],
+
+                ["DATE"=> "2022/12/11",
+                "TIME"=> "12:00:00",
+                "inspector_id"=> 2,
+                "violation_id"=> 2,
+                "restaurant_id"=> 2],
+                ["DATE"=> "2023/01/11",
+                "TIME"=> "12:00:00",
+                "inspector_id"=> 3,
+                "violation_id"=> 3,
+                "restaurant_id"=> 3],
+            ]);
     }
 
     /**
